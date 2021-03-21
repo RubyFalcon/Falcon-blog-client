@@ -16,7 +16,6 @@ import {
 import { betterUpdateQuery } from "./betterUpdateQuery";
 import { cacheExchange, Resolver } from "@urql/exchange-graphcache";
 import Router from "next/router";
-import { FieldsOnCorrectTypeRule } from "graphql";
 
 const errorExchange: Exchange = ({ forward }) => (ops$) => {
   return pipe(
@@ -34,7 +33,7 @@ const cursorPagination = (): Resolver => {
   return (_parent, fieldArgs, cache, info) => {
     const { parentKey: entityKey, fieldName } = info;
     const allFields = cache.inspectFields(entityKey);
-    console.log("all fields, ", allFields);
+    console.log("all fields: ", allFields);
     const fieldInfos = allFields.filter((info) => info.fieldName === fieldName);
     const size = fieldInfos.length;
     if (size === 0) {
@@ -145,8 +144,12 @@ export const createUrqlClient = (ssrExchange: any) => ({
         Mutation: {
           createPost: (_result, args, cache, info) => {
             //-- invalide post cache
-            cache.invalidate("Query", "posts", {
-              limit: 15,
+            const allFields = cache.inspectFields("Query");
+            const fieldInfos = allFields.filter(
+              (info) => info.fieldName === "posts"
+            );
+            fieldInfos.forEach((fi) => {
+              cache.invalidate("Query", "posts", fi.arguments || {});
             });
           },
           logout: (_result, args, cache, info) => {
