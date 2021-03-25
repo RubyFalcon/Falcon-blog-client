@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import Layout from "../components/Layout";
-import { useIsAuth } from "../utils/useisAuth";
+import { useIsAuth } from "../utils/useIsAuth";
 
 const CreatePost: React.FC<{}> = ({}) => {
   useIsAuth();
