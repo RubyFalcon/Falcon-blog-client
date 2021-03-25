@@ -21,7 +21,7 @@ const EditDeletePostButtons: React.FC<EditDeletePostButtonsProps> = ({
   }
   return (
     <Box>
-      <NextLink href="/post/edit/[id]" as={`post/edit/${id}`}>
+      <NextLink href="/post/edit/[id]" as={`/post/edit/${id}`}>
         <IconButton as={Link} aria-label="Edit Post" icon={<EditIcon />} />
       </NextLink>
       <IconButton
