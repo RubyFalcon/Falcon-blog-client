@@ -1,18 +1,16 @@
 import { Box, Button } from "@chakra-ui/react";
-import { Formik, Form } from "formik";
-import React, { useEffect } from "react";
-import { InputField } from "../components/InputField";
-import { Wrapper } from "../components/Wrapper";
-import { useCreatePostMutation, useMeQuery } from "../generated/graphql";
+import { Form, Formik } from "formik";
 import { useRouter } from "next/router";
-import { withUrqlClient } from "next-urql";
-import { createUrqlClient } from "../utils/createUrqlClient";
+import React from "react";
+import { InputField } from "../components/InputField";
 import Layout from "../components/Layout";
+import { useCreatePostMutation } from "../generated/graphql";
 import { useIsAuth } from "../utils/useIsAuth";
+import { withApollo } from "../utils/withApollo";
 
 const CreatePost: React.FC<{}> = ({}) => {
   useIsAuth();
-  const [, createPost] = useCreatePostMutation();
+  const [createPost] = useCreatePostMutation();
   const router = useRouter();
 
   return (
@@ -21,9 +19,14 @@ const CreatePost: React.FC<{}> = ({}) => {
         initialValues={{ title: "", text: "" }}
         onSubmit={async (values) => {
           //todo: add validation to posts
-          const { error } = await createPost({ input: values });
-          console.log("error: ", error);
-          if (!error) {
+          const { errors } = await createPost({
+            variables: { input: values },
+            update: (cache) => {
+              cache.evict({ fieldName: "posts" });
+            },
+          });
+
+          if (!errors) {
             router.push("/");
           }
         }}
@@ -55,4 +58,4 @@ const CreatePost: React.FC<{}> = ({}) => {
   );
 };
 
-export default withUrqlClient(createUrqlClient)(CreatePost);
+export default withApollo({ ssr: false })(CreatePost);
