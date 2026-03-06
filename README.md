@@ -54,16 +54,14 @@ src/
   theme.tsx       Chakra UI theme configuration
   utils/          helper utilities such as URQL client setup
 ```
-Running Locally
-Prerequisites
+## Running Locally
+## Prerequisites
 
-Node.js
+ - Node.js
+ - npm or yarn
+ - A running Falcon Blog GraphQL backend
 
-npm or yarn
-
-A running Falcon Blog GraphQL backend
-
-Installation
+## Installation
 
 ```bash
 git clone <your-repo-url>
@@ -71,7 +69,7 @@ cd Falcon-blog-client-main
 npm install
 ```
 
-##Start Development Server
+## Start Development Server
 
 ```bash
 npm run dev
