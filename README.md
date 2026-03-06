@@ -1,23 +1,55 @@
-# Example app with [chakra-ui](https://github.com/chakra-ui/chakra-ui)
+# Falcon Blog Client
 
-This example features how to use [chakra-ui](https://github.com/chakra-ui/chakra-ui) as the component library within a Next.js app.
+A full stack blog frontend built with **Next.js**, **React**, **TypeScript**, **Chakra UI**, and **GraphQL**.
 
-We are connecting the Next.js `_app.js` with `chakra-ui`'s Theme and ColorMode containers so the pages can have app-wide dark/light mode. We are also creating some components which shows the usage of `chakra-ui`'s style props.
+This project was created as part of my early full stack development work to deepen my understanding of modern frontend architecture and how client applications interact with backend APIs. It connects to a GraphQL backend to support user authentication, post creation, pagination, and voting functionality.
 
-## Deploy your own
+## Features
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+- User registration and login
+- Authentication-aware navigation
+- Create, view, and manage blog posts
+- Upvote / downvote functionality
+- Cursor-based pagination
+- GraphQL API integration
+- Client-side cache updates and query invalidation
+- Responsive UI built with Chakra UI
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-chakra-ui&project-name=with-chakra-ui&repository-name=with-chakra-ui)
+## Tech Stack
 
-## How to use
+**Frontend**
+- Next.js
+- React
+- TypeScript
+- Chakra UI
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+**Data / API**
+- GraphQL
+- URQL
 
-```bash
-npx create-next-app --example with-chakra-ui with-chakra-ui-app
-# or
-yarn create next-app --example with-chakra-ui with-chakra-ui-app
-```
+**Tooling**
+- Node.js
+- Code generation for typed GraphQL queries and mutations
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## What I Learned
+
+This was one of the first projects where I moved beyond building simple UI and started thinking more deeply about:
+
+- frontend architecture
+- authentication state
+- pagination
+- cache consistency
+- typed API integration
+- coordinating frontend and backend behaviour
+
+A key part of the project was handling client-side cache updates after actions such as login, logout, voting, and post creation so that the UI stayed in sync without unnecessary refetching.
+
+## Project Structure
+
+```text
+src/
+  components/     reusable UI components
+  graphql/        GraphQL queries, mutations, and fragments
+  pages/          Next.js route pages
+  theme.tsx       Chakra UI theme configuration
+  utils/          helper utilities such as URQL client setup
