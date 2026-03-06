@@ -53,3 +53,69 @@ src/
   pages/          Next.js route pages
   theme.tsx       Chakra UI theme configuration
   utils/          helper utilities such as URQL client setup
+```
+Running Locally
+Prerequisites
+
+Node.js
+
+npm or yarn
+
+A running Falcon Blog GraphQL backend
+
+Installation
+
+```bash
+git clone <your-repo-url>
+cd Falcon-blog-client-main
+npm install
+```
+
+##Start Development Server
+
+```bash
+npm run dev
+```
+
+Then open:
+
+```text
+http://localhost:3000
+
+```
+
+## Backend
+
+This project was designed to work with a separate GraphQL backend.
+
+If you are reviewing this repository on its own, please note that some functionality depends on the backend being available and configured correctly.
+
+## Current Status
+
+This project was originally built in 2021 and is no longer actively maintained. Because of ecosystem and dependency changes since then, the project may require version updates and configuration fixes before it runs successfully in a modern environment.
+
+I still include it as part of my portfolio because it reflects an important stage in my development as a full stack engineer and demonstrates experience with React, TypeScript, GraphQL, authentication flows, pagination, and client-side caching.
+
+## Future Improvements
+
+If I were rebuilding or extending this project today, I would focus on:
+
+Updating dependencies and locking stable versions
+
+Improving project documentation
+
+Adding automated tests
+
+Refining folder structure and naming consistency
+
+Improving error handling and loading states
+
+Refreshing the UI and accessibility details
+
+Author
+
+Tupay Felkin
+
+GitHub: https://github.com/RubyFalcon
+
+[LinkedIn](https://www.linkedin.com/in/tupay-felkin-750388260/)
